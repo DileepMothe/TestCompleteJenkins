@@ -1,0 +1,16 @@
+﻿Sub Test1
+  TestedApps.Orders.Run
+  Dim orders
+  Dim mainForm
+  Dim orderForm
+  Set orders = Sys.process("Orders")
+  Set mainForm = orders.MainForm
+  mainForm.Maximize
+  Call mainForm.MainMenu.Click("Orders|New order...")
+  Set orderForm = orders.OrderForm
+  Set product= orderForm.FindChild("Name","*ProductNames*",2000)
+  product.ClickItem("FamilyAlbum")
+  Set OkButton=orderForm.WinFormsObject("ButtonOK")
+  OkButton.ClickButton
+  mainForm.Minimize
+End Sub
